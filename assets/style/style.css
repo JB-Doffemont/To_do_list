@@ -1,0 +1,99 @@
+* {
+  font-family: "Dancing Script", cursive;
+  list-style: circle;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(
+    ellipse farthest-corner at center top,
+    #f39264 20%,
+    #f2606f 100%
+  );
+}
+
+#root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#taskContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addTask h1 {
+  text-align: center;
+  letter-spacing: 3px;
+  word-spacing: 5px;
+  font-size: 3rem;
+}
+
+.addTask input {
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -10px -5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.addTask input:focus {
+  outline: none;
+}
+
+.addTask button {
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.addTask button:hover {
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+  border-color: #f2606f;
+  background-color: #f39264;
+  border-radius: 5px;
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 450px;
+  background-color: white;
+  border-radius: 10px;
+  /* align-items: center; */
+  text-align: center;
+  text-align: justify;
+  margin: 10vh 10vh 10vh 10vh;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2),
+    -15px -10px 8px rgba(0, 0, 0, 0.2);
+}
+
+.task img {
+  height: 132px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.task button {
+  border-radius: 5px;
+}
+
+.task button:hover {
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.5s ease-in;
+  border-color: #f2606f;
+  background-color: #f39264;
+  transform: scale(1.02);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+.task .buttonShow {
+  width: 100px;
+  margin-left: 50px;
+}

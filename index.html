@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list</title>
+
+    <!-- scripts -->
+    <script defer src="https://unpkg.com/vue@next"></script>
+    <script defer src="assets/script/script.js"></script>
+
+    <!-- liens CSS et google font -->
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Point de montage de l'application -->
+    <div id="root">
+      <div class="addTask">
+        <h1>ToDo List</h1>
+        <input
+          type="text"
+          @input="saisieInput"
+          v-on:keyup.enter="addListToDo"
+          :value="list"
+        />
+        <button @click="addListToDo">Valider</button>
+      </div>
+
+      <div id="taskContainer">
+        <div class="task" v-show="tableauToDo.length > 0">
+          <img src="ressources/todo1.png" />
+          <ul v-show="showToDo">
+            <!-- Liste affichant les différents éléments du tableau -->
+            <li v-for="(element, index) in tableauToDo">
+              {{element}}
+              <div class="buttonNext">
+                <!-- Boutton qui appelle la méthode permettant de pousser les éléments et leurs index -->
+                <button @click="addListOngoing (index)">En cours</button>
+              </div>
+            </li>
+          </ul>
+          <!-- Boutton qui au clique appelle la méthode permettant de cacher/afficher la liste -->
+          <button class="buttonShow" @click="hideToDo">
+            {{showToDo ? "Masquer" : "Afficher"}}
+          </button>
+        </div>
+
+        <div class="task" v-show="tableauOngoing.length > 0">
+          <img src="ressources/enCour.jpg" />
+          <ul v-show="showOnGoing">
+            <li v-for="(element, index) in tableauOngoing">
+              {{element}}
+              <div class="buttonNext">
+                <button @click="addListDone (index)">Fait</button>
+              </div>
+            </li>
+          </ul>
+          <button class="buttonShow" @click="hideOnGoing">
+            {{showOnGoing ? "Masquer" : "Afficher"}}
+          </button>
+        </div>
+
+        <div class="task" v-show="tableauDone.length > 0">
+          <img src="ressources/fait.png" />
+          <ul v-show="showDone">
+            <li v-for="(element, index) in tableauDone">
+              {{element}}
+              <div class="buttonNext">
+                <button @click="deleteElement (index)">Supprimer</button>
+              </div>
+            </li>
+          </ul>
+          <button class="buttonShow" @click="hideDone">
+            {{showDone ? "Masquer" : "Afficher"}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
